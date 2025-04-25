@@ -2,13 +2,71 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Download bằng nút</title>
+  <title>Download File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* iOS Style */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: #f2f2f7;
+      color: #000;
+    }
+
+    .header {
+      background-color: #fff;
+      padding: 16px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .container {
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    .btn-download {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 17px;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-download:hover {
+      background-color: #005ee0;
+    }
+
+    .note {
+      margin-top: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Tải file khi nhấn nút</h2>
-  <button onclick="https://download1085.mediafire.com/vsytt3ditqkgDzXpQOVMgpddJi5RdrOJoTpEmPzB9T9GqDsqz__XDeI2dU3jlvJB6Hsy0g26hL6zqddpIH59ZhyIFsH0kwhmIncBnq5LGf1waS9BhOQYFQdJZXRIVSekQBcKNgt2FAGJ1llbYTe5f_St96Rv3wpT6BAy6xkFuZYDiQ/muf6k6sg3xvwash/kok3shi9_v5.0.3.ipa'">
-    Tải file ngay
-  </button>
+
+  <div class="header">
+    Tải xuống
+  </div>
+
+  <div class="container">
+    <p>Nhấn nút bên dưới để tải tệp</p>
+    <button class="btn-download" onclick="window.location.href='https://example.com/file.zip'">
+      Tải File Ngay
+    </button>
+    <div class="note">
+      File sẽ tự động tải xuống nếu trình duyệt hỗ trợ.
+    </div>
+  </div>
+
 </body>
 </html>
-
