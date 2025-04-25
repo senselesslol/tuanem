@@ -1,13 +1,11 @@
-Package: org.coolstar.classiclockscreen
-Version: 3.3.1
-Architecture: iphoneos-arm
-Maintainer: repoVN
+Package: com.hackyouriphone.classiclockscreen
+Name: ClassicLockScreen
+Version: 3.3.1k
 Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), curl, firmware(<< 8.0) | org.coolstar.libclassictelephonyui (>= 1.1-1)
-Filename: ./debs/org.coolstar..classiclockscreen_3.3.1_iphoneos-arm.deb
-Size: 736186
-MD5sum: 13a6d679feda383555d00b4d3a5fd2a3
-Section: Lockscreen
-Description: Lockscreen iOS 6 on iOS 8/9
-Author: coolstar
-Name: Tuanem
-
+Architecture: iphoneos-arm
+Author: CoolStar, Jeremy Goulet, Phillip Tennen <repo@hackyouriphone.org>
+Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Section: HYI - Tweaks
+Description: Hate the iOS 7 Lock Screen?
+Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Maintainer: iLeoLion <repo@hackyouriphone.org>
