@@ -15,7 +15,6 @@ Package: com.tuanem.classiclockscreenforios9
 Name: ClassicLockScreen for iOS9
 Version: 3.3.1k
 Filename: ./debs/org.coolstar.classiclockscreenforios9_3.3.1_iphoneos-arm.deb
-Depends: org.coolstar.libclassictelephonyui
 Architecture: iphoneos-arm iphoneos-arm64
 Author: CoolStar, Jeremy Goulet, Phillip Tennen <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
