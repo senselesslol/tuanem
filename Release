@@ -3,7 +3,7 @@ Label: Tuanem's Repo
 Suite: stable
 Version: 1.0
 Codename: tuanem
-Architectures: iphoneos-arm iphoneos-arm64
+Architectures: iphoneos-arm
 Components: main
 Description: Tuanem's Cydia Repository
 Icon: file://CydiaIcon.png
