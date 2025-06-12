@@ -23,7 +23,7 @@ Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 
 Filename: debs/org.coolstar.classiclockscreen_3.3.1_iphoneos-arm.deb
 Size: 736186
 MD5sum: 13a6d679feda383555d00b4d3a5fd2a3
-Section: Lockscreen
+Section: System
 Priority: optional
 Description: Hate the iOS 7 Lock Screen?
 Author: CoolStar
