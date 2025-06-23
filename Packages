@@ -24,7 +24,7 @@ Version: 1.0.0
 Architecture: iphoneos-arm
 Author: BYA Repository
 Filename: debs/paragon_1.0.0_iphoneos-arm.paragon.deb
-Depends: firmware (>= 6.0), mobilesubstrate, com.wynd.dreamboard
+Depends: firmware (>= 6.0), mobilesubstrate, vn.gsm.dreamboard
 Conflicts: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
 Replaces: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
 Depiction: http://repo.biteyourapple.net/depiction/dep.php?name=paragon
