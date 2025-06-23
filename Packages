@@ -1,22 +1,29 @@
+Name: Anemone
 Package: com.anemonetheming.anemone
+Priority: optional
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), com.rpetrich.rocketbootstrap, pincrush
+Provides: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, org.coolstar.customclock, com.codethemed.iconbundles, com.idd.iconomatic
+Replaces: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, com.codethemed.iconbundles, com.idd.iconomatic
+Conflicts: org.coolstar.themelib, anemoneteam.anemone, winterboard, com.codethemed.iconbundles, com.idd.iconomatic
 Version: 2.1.7-3
 Architecture: iphoneos-arm
+Description: An awesome theme manager!
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=anemoneDp
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=anemoneDp
+Sponsor: thebigboss.org <http://thebigboss.org>
 Maintainer: BigBoss <bigboss@thebigboss.org>
-Installed-Size: 8312
-Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), com.rpetrich.rocketbootstrap, pincrush
-Conflicts: org.coolstar.themelib, anemoneteam.anemone, winterboard, com.codethemed.iconbundles, com.idd.iconomatic
-Replaces: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, com.codethemed.iconbundles, com.idd.iconomatic
-Provides: org.coolstar.themelib, anemoneteam.anemone, org.coolstar.classicdock, winterboard, org.coolstar.classicbadges, org.coolstar.customclock, com.codethemed.iconbundles, com.idd.iconomatic
+Author: AnemoneTeam <anemonetheming@gmail.com>
 Filename: debs/anemone_2.1.7-3.deb
+dev: anemonetheming
+Section: Tweaks
+Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10, compatible::ios11
+Installed-Size: 8312
+Icon: file:///Applications/Anemone.app/icon.png
+Size: 1875394
 MD5sum: 40e12bb468792a152956cf5a315292e7
 SHA1: d5f441c330d085ad387375c9c027f0668567fbca
 SHA256: 9d8c9a9beb644c5a4c8ad55db8730849e5851e4b26f90b0c2c74f88990feb9b4
-Section: Tweaks
-Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=anemoneDp
-Description: An awesome theme manager!
-Author: AnemoneTeam <anemonetheming@gmail.com>
-Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=anemoneDp
-Name: Anemone
+
 
 Package: repo.biteyourapple.net.paragon
 Name: Paragon
@@ -37,3 +44,23 @@ Size: 2113572
 MD5sum: 78a926860ca9ac8f47e4204c62cb7a88
 SHA1: 87528a1f1b006fd909650f8d5ef2b54f6e149920
 SHA256: 03c09adece479bebbd4bf014321b721c8e2f6fecf8712ae0c3fdbbb7f5bb5862
+
+Package: com.ravirajm.torch
+Name: Torch
+Version: 1.5.2
+Architecture: iphoneos-arm
+Author: rvirajm <rvirajm@gmail.com>
+Filename: debs/com.ravirajm.torch_1.5.2_iphoneos-arm.deb
+Depends: mobilesubstrate
+Depiction: http://modmyi.com/info/torch.d.php
+Priority: extra
+Section: Tweaks
+Description: Toggle LED Flash from the LockScreen.
+Homepage: http://modmyi.com/info/torch.php
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+Size: 34688
+MD5sum: a77b7ce2b9388d5a7c9d12e663df52c5
+SHA1: 8cf8ef240cf89a83bbd25edcbc2b6b3566695e51
+SHA256: d0adfbf3b43136cc8a5b98cdff3ed18ef5b3ec7662fbb163586da98409b3c73f
+
