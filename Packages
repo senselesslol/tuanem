@@ -18,44 +18,22 @@ Author: AnemoneTeam <anemonetheming@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=anemoneDp
 Name: Anemone
 
-Package: ai.akemi.appsyncunified
-Version: 116.0
+Package: repo.biteyourapple.net.paragon
+Name: Paragon
+Version: 1.0.0
 Architecture: iphoneos-arm
-Maintainer: Karen/あけみ <karen@akemi.ai>
-Installed-Size: 636
-Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 18.2)
-Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, com.ifucker.appsync, com.sexyphonetech.appsyncunified, appsyncunifiedofficial, org.digbick.asufixed, cn.mingmei.asu623517234615234813, technology.goated.appsync, technology.goated.appsyncunified, vaginalfisting.appsynctool, science.xnu.substitute, akemi.appsink, akemi.appsyncunifed, akemi.appsyncunifed2, akemi.appsyncunifedpatched, appsyncpatched, appsyncrootless, weaponized.autism.technology.appsyncunified, ellekit (< 1.1)
-Replaces: us.hackulo.appsync50, net.angelxwind.appsyncunified
-Provides: appsync, net.angelxwind.appsyncunified
-Filename: debs/ai.akemi.appsyncunified_116.0_iphoneos-arm.akemi.deb
-Size: 78056
-MD5sum: 94325cbe75c1b30c15b7f4f24defd37b
-SHA1: 698bcbf521d81925cf4528d4661fb4af973e5dab
-SHA256: ffb6b3dfd84c8e6285c961bfc94f9645b2b194791d8dc43bcfc56f6b66b15e01
-Section: Tweaks
-Homepage: https://cydia.akemi.ai/
-Description: Enables the ability to install unsigned/fakesigned iOS applications.
-Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
-Depiction: https://cydia.akemi.ai/?page/ai.akemi.appsyncunified
-Name: AppSync Unified 32bit
-
-Package: ai.akemi.appsyncunified
-Version: 116.0
-Architecture: iphoneos-arm64
-Maintainer: Karen/あけみ <karen@akemi.ai>
-Installed-Size: 668
-Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 18.2)
-Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, com.ifucker.appsync, com.sexyphonetech.appsyncunified, appsyncunifiedofficial, org.digbick.asufixed, cn.mingmei.asu623517234615234813, technology.goated.appsync, technology.goated.appsyncunified, vaginalfisting.appsynctool, science.xnu.substitute, akemi.appsink, akemi.appsyncunifed, akemi.appsyncunifed2, akemi.appsyncunifedpatched, appsyncpatched, appsyncrootless, weaponized.autism.technology.appsyncunified, ellekit (< 1.1)
-Replaces: us.hackulo.appsync50, net.angelxwind.appsyncunified
-Provides: appsync, net.angelxwind.appsyncunified
-Filename: debs/ai.akemi.appsyncunified_116.0_iphoneos-arm64.deb
-Size: 49472
-MD5sum: d6a31911e878b83e47c6525fa29ecef1
-SHA1: d00d2667c0d5421dddfc70a2734f1d63b972a535
-SHA256: 2bdaac72a6d1b006309b7dd28f51b1e3d351d3d8758fc9f08ca670f1d71eb382
-Section: Tweaks
-Homepage: https://cydia.akemi.ai/
-Description: Enables the ability to install unsigned/fakesigned iOS applications.
-Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
-Depiction: https://cydia.akemi.ai/?page/ai.akemi.appsyncunified
-Name: AppSync Unified 64bit
+Author: BYA Repository
+Filename: debs/paragon_1.0.0_iphoneos-arm.paragon.deb
+Depends: firmware (>= 6.0), mobilesubstrate, com.wynd.dreamboard
+Conflicts: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
+Replaces: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
+Depiction: http://repo.biteyourapple.net/depiction/dep.php?name=paragon
+Description: Paragon is the most realistic Windows Phone 8 theme for your iPhone!
+Homepage: http://www.biteyourapple.net
+Maintainer: Redenfire <redenfire@gmail.com>
+Section: Themes
+Sponsor: biteyourapple <http://www.biteyourapple.net>
+Size: 2113572
+MD5sum: 78a926860ca9ac8f47e4204c62cb7a88
+SHA1: 87528a1f1b006fd909650f8d5ef2b54f6e149920
+SHA256: 03c09adece479bebbd4bf014321b721c8e2f6fecf8712ae0c3fdbbb7f5bb5862
