@@ -1,6 +1,3 @@
-
-
-
 Package: repo.biteyourapple.net.paragon
 Name: Paragon
 Version: 1.0.0
@@ -39,4 +36,38 @@ Size: 34688
 MD5sum: a77b7ce2b9388d5a7c9d12e663df52c5
 SHA1: 8cf8ef240cf89a83bbd25edcbc2b6b3566695e51
 SHA256: d0adfbf3b43136cc8a5b98cdff3ed18ef5b3ec7662fbb163586da98409b3c73f
+
+Package: com.hackyouriphone.classiclockscreen
+Name: ClassicLockScreen
+Version: 3.3.1k
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), curl, firmware(<< 8.0) | org.coolstar.libclassictelephonyui (>= 1.1-1)
+Architecture: iphoneos-arm
+Author: CoolStar, Jeremy Goulet, Phillip Tennen <repo@hackyouriphone.org>
+Filename: debs/org.coolstar.classiclockscreen_3.3.1_iphoneos-arm.deb
+Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Section: HYI - Tweaks
+Description: Hate the iOS 7 Lock Screen?
+Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Maintainer: iLeoLion <repo@hackyouriphone.org>
+Size: 736186
+MD5sum: 7d5da71444883fec6d4273860d981ca3
+SHA1: 3959241070d7b0a0cd41b21a733aaa70351962e1
+SHA256: 225d085f3b8af7bd9b3f1b479efa56c9804c87e7afa322689dc676ffe83ff2ef
+
+Package: com.linusyang.ytbnoad
+Section: Tweaks
+Installed-Size: 344
+Maintainer: Linus Yang
+Architecture: iphoneos-arm
+Version: 0.1
+Depends: mobilesubstrate
+Conflicts: me.alfhaily.adblockforyoutube
+Description: remove ads in Youtube app
+Name: YoutubeNoAd
+Author: Linus Yang
+Filename: debs/com.linusyang.ytbnoad_0.1_iphoneos-arm.deb
+Size: 50564
+MD5sum: 39e43deaa545fc126991b2fe2343d4c4
+SHA1: 848ecf5a0343fe1ac5e4b1cda292d2485938f2a5
+SHA256: 58801323e9993fa855e063a887ed63f4b84ca966a6ca83459b3d5ca4e342843f
 
