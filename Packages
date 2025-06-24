@@ -86,3 +86,21 @@ Size: 36844432
 MD5sum: 2fc90234ca64aec8d45d14b938b722c9
 SHA1: a1aeb6638d3a14378b4eefca73e4e38ee1fb5275
 SHA256: b4b076aa5fe88dc2dad22b3da9a329043b5efbc3c4eefb96f57f45a0273fc382
+
+Package: com.zodttd.n64ios
+Name: n64ios
+Version: 0.9.0
+Architecture: iphoneos-arm
+Description: Nintendo 64 (N64) emulator for all iOS 3/4/5!
+Depiction: http://www.zodttd.com/repo/cydiathemes/depiction/n64ios/index.php
+Homepage: http://www.zodttd.com
+Maintainer: ZodTTD <zodttd@zodttd.com>
+Author: ZodTTD
+Section: Games
+Tag: cydia::commercial
+Filename: debs/com.zodttd.n64ios_0.9.0_iphoneos-arm.deb
+Size: 1624068
+MD5sum: 8b23c1dc372c58d015b00de98907aebd
+SHA1: 686a41d4f55c53f03e596e14b3b23ff2942fab8a
+SHA256: e597485ec30ee9c211ffa83820ec0e6bebd253b917015933528764b7e9e109f5
+
