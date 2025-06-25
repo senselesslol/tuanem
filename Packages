@@ -82,7 +82,7 @@ Author: isoftcom.com <isoftteamsupport@gmail.com>
 dev: isoftru
 Description: Run Windows 3.11 and Windows 95 on your iPhone. It's slow, but worked.
 Filename: debs/bochs.deb 
-Size: 36949552
+Size: 36844432
 MD5sum: 2fc90234ca64aec8d45d14b938b722c9
 SHA1: a1aeb6638d3a14378b4eefca73e4e38ee1fb5275
 SHA256: b4b076aa5fe88dc2dad22b3da9a329043b5efbc3c4eefb96f57f45a0273fc382
