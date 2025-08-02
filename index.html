@@ -4,72 +4,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thêm Repo Cydia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d1117;
-      color: #e6edf3;
       margin: 0;
       padding: 0;
+      background-color: #0d0d0d;
+      color: #39ff14;
+      font-family: 'Share Tech Mono', monospace;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       text-align: center;
+      background-image: radial-gradient(circle at 50% 0%, #111 0%, #000 100%);
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1rem;
-      margin: 0.5rem 0 1.2rem;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #b3ffcc;
     }
 
     a.button {
       display: inline-block;
-      padding: 14px 28px;
+      padding: 14px 30px;
       margin-top: 20px;
-      background-color: #00cc66;
-      color: white;
+      background-color: transparent;
+      border: 2px solid #39ff14;
+      color: #39ff14;
       text-decoration: none;
       font-size: 1.1rem;
-      border-radius: 12px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14 inset;
     }
 
     a.button:hover {
-      background-color: #00994d;
-      transform: scale(1.03);
+      background-color: #39ff14;
+      color: #000;
+      box-shadow: 0 0 15px #00ff80, 0 0 30px #00ff80 inset;
+      transform: scale(1.05);
     }
 
     code {
-      background-color: #1c1f26;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.95rem;
       display: inline-block;
-      margin-top: 10px;
-      color: #89e6a8;
+      margin-top: 12px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      background-color: #111;
+      border: 1px solid #39ff14;
+      color: #00ffcc;
+      border-radius: 8px;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    .glow-border {
+      border: 2px dashed #39ff14;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #39ff14;
+      max-width: 90%;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      a.button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+      code {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Thêm Repo Cydia</h1>
-  <p>Nhấn nút bên dưới để thêm repo vào Cydia:</p>
-  <a class="button" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://senselesslol.github.io/tuanem/">
-    Thêm Repo vào Cydia
-  </a>
-  <p>Hoặc thêm thủ công:</p>
-  <code>https://senselesslol.github.io/tuanem/</code>
+  <div class="glow-border">
+    <h1>🔥 Thêm Repo Cydia</h1>
+    <p>Nhấn nút bên dưới để thêm ngay vào Cydia:</p>
+    <a class="button" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://senselesslol.github.io/tuanem/">
+      ➕ Thêm Repo
+    </a>
+    <p>Hoặc nhập thủ công:</p>
+    <code>https://senselesslol.github.io/tuanem/</code>
+  </div>
 </body>
 </html>
+
