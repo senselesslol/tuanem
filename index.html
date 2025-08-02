@@ -2,123 +2,131 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slide to Add Repo</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #222, #444);
+      height: 100vh;
+      background: linear-gradient(to bottom, #4c6070, #1c1f26);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      user-select: none;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
+      flex-direction: column;
+      color: white;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 22px;
-      margin-bottom: 20px;
+      font-weight: 300;
+      font-size: 24px;
+      margin-bottom: 50px;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 2px black;
     }
 
-    .slider {
+    .slider-container {
       position: relative;
-      background: #333;
+      width: 300px;
       height: 60px;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 30px;
-      overflow: hidden;
-      border: 2px solid #777;
+      border: 1px solid #666;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
     }
 
-    .slider-track {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-      font-size: 18px;
-      pointer-events: none;
+    .slider-text {
+      font-size: 20px;
+      font-weight: 300;
+      text-align: center;
+      line-height: 60px;
+      user-select: none;
+      background: linear-gradient(120deg, transparent 30%, 
+rgba(255,255,255,0.6) 50%, transparent 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmerText 2s infinite linear;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
 
     .slider-handle {
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
       width: 60px;
-      background: linear-gradient(to bottom, #eee, #bbb);
+      height: 60px;
+      background: linear-gradient(to bottom, #fefefe, #d0d0d0);
       border-radius: 30px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+      box-shadow: inset 0 0 4px #999, 0 0 10px rgba(255,255,255,0.3);
       cursor: grab;
       text-align: center;
       line-height: 60px;
       font-weight: bold;
-      color: #000;
+      font-size: 20px;
+      color: #444;
       z-index: 2;
       transition: background 0.2s;
     }
 
     .slider-handle:active {
-      background: #ddd;
+      background: #ccc;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 11px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Kéo để thêm Repo Cydia</h1>
-    <div class="slider" id="slider">
-      <div class="slider-track">Slide to add</div>
-      <div class="slider-handle" id="handle">➤</div>
-    </div>
+  <h1>Thêm Repo Cydia</h1>
+
+  <div class="slider-container" id="slider">
+    <div class="slider-text">› Slide to unlock</div>
+    <div class="slider-handle" id="handle">➤</div>
   </div>
+
+  <footer>&copy; 2025 tuanemss</footer>
 
   <script>
     const handle = document.getElementById("handle");
     const slider = document.getElementById("slider");
     let isDragging = false;
 
-    handle.addEventListener("mousedown", function (e) {
+    handle.addEventListener("mousedown", (e) => {
       isDragging = true;
       document.body.style.cursor = "grabbing";
     });
 
-    window.addEventListener("mouseup", function () {
+    window.addEventListener("mouseup", () => {
+      if (!isDragging) return;
       isDragging = false;
       document.body.style.cursor = "default";
 
-      // Reset if not fully dragged
-      if (parseInt(handle.style.left || 0) < slider.offsetWidth - 
-handle.offsetWidth - 10) {
+      const left = parseInt(handle.style.left || 0);
+      const max = slider.offsetWidth - handle.offsetWidth - 10;
+      if (left < max) {
         handle.style.left = "0px";
+      } else {
+        window.location.href = 
+"cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io";
       }
     });
 
-    window.addEventListener("mousemove", function (e) {
+    window.addEventListener("mousemove", (e) => {
       if (!isDragging) return;
-
       const sliderRect = slider.getBoundingClientRect();
       let x = e.clientX - sliderRect.left;
       x = Math.max(0, Math.min(x, slider.offsetWidth - 
 handle.offsetWidth));
       handle.style.left = x + "px";
-
-      // If dragged fully, trigger action
-      if (x >= slider.offsetWidth - handle.offsetWidth - 5) {
-        window.location.href = 
-"cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io";
-      }
     });
   </script>
 </body>
