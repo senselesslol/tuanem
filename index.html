@@ -45,6 +45,7 @@
       user-select: none;
       background: linear-gradient(120deg, transparent 30%, 
 rgba(255,255,255,0.6) 50%, transparent 70%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shimmerText 2s infinite linear;
@@ -72,6 +73,7 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
       color: #444;
       z-index: 2;
       transition: background 0.2s;
+      touch-action: none;
     }
 
     .slider-handle:active {
@@ -86,7 +88,7 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
   </style>
 </head>
 <body>
-  <h1>Thêm Repo Cydia</h1>
+  <h1>Thêm Repo Vào Sileo / Zebra / Cydia</h1>
 
   <div class="slider-container" id="slider">
     <div class="slider-text">› Slide to unlock</div>
@@ -100,7 +102,45 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
     const slider = document.getElementById("slider");
     let isDragging = false;
 
-    handle.addEventListener("mousedown", (e) => {
+    function moveHandle(x) {
+      const sliderRect = slider.getBoundingClientRect();
+      let offset = x - sliderRect.left - handle.offsetWidth / 2;
+      offset = Math.max(0, Math.min(offset, slider.offsetWidth - 
+handle.offsetWidth));
+      handle.style.left = offset + "px";
+    }
+
+    function checkUnlock() {
+      const left = parseInt(handle.style.left || 0);
+      const max = slider.offsetWidth - handle.offsetWidth - 10;
+      if (left >= max) {
+        const repo = "https://tuanemss.github.io";
+        const urls = [
+          `sileo://source/${repo}`,
+          `zbra://sources/add/${repo}`,
+          `cydia://url/https://cydia.saurik.com/api/share#?source=${repo}`
+        ];
+
+        let i = 0;
+        const tryOpen = () => {
+          if (i >= urls.length) return;
+          const link = document.createElement("a");
+          link.href = urls[i];
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          i++;
+          setTimeout(tryOpen, 500);
+        };
+
+        tryOpen();
+      } else {
+        handle.style.left = "0px";
+      }
+    }
+
+    // Mouse
+    handle.addEventListener("mousedown", () => {
       isDragging = true;
       document.body.style.cursor = "grabbing";
     });
@@ -109,24 +149,28 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
       if (!isDragging) return;
       isDragging = false;
       document.body.style.cursor = "default";
-
-      const left = parseInt(handle.style.left || 0);
-      const max = slider.offsetWidth - handle.offsetWidth - 10;
-      if (left < max) {
-        handle.style.left = "0px";
-      } else {
-        window.location.href = 
-"cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io";
-      }
+      checkUnlock();
     });
 
     window.addEventListener("mousemove", (e) => {
       if (!isDragging) return;
-      const sliderRect = slider.getBoundingClientRect();
-      let x = e.clientX - sliderRect.left;
-      x = Math.max(0, Math.min(x, slider.offsetWidth - 
-handle.offsetWidth));
-      handle.style.left = x + "px";
+      moveHandle(e.clientX);
+    });
+
+    // Touch
+    handle.addEventListener("touchstart", () => {
+      isDragging = true;
+    });
+
+    window.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      moveHandle(e.touches[0].clientX);
+    });
+
+    window.addEventListener("touchend", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      checkUnlock();
     });
   </script>
 </body>
