@@ -2,84 +2,71 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tuanem's Repo</title>
+  <title>tuanem's Repo - Cydia</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Tahoma, Verdana, sans-serif;
-      background: #c0d3f8;
-      color: black;
+      font-family: "Tahoma", sans-serif;
+      background: url('image/1.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #000;
     }
 
     .window {
+      background-color: #e0e0e0;
       width: 500px;
-      margin: 80px auto;
-      border: 2px solid #3a6ea5;
-      background: #e3ecf9;
-      box-shadow: 4px 4px 0 #7d9ec0;
+      margin: 100px auto;
+      border: 2px solid #000080;
+      box-shadow: 0 0 10px #000;
     }
 
     .title-bar {
-      background: linear-gradient(to right, #316ac5, #5a8ee3);
-      color: white;
-      padding: 6px 10px;
+      background-color: #000080;
+      color: #fff;
+      padding: 8px;
       font-weight: bold;
-      font-size: 14px;
-      border-bottom: 2px solid #1e4e91;
     }
 
     .content {
       padding: 20px;
-      font-size: 14px;
     }
 
-    .content p {
-      margin-bottom: 20px;
-    }
-
-    .button {
+    .add-btn {
       display: inline-block;
-      padding: 8px 16px;
-      background: #dcdcdc;
-      border: 2px outset #fff;
-      font-weight: bold;
+      background-color: #d6d6d6;
+      padding: 10px 20px;
+      border: 2px outset #ccc;
+      color: #000;
       text-decoration: none;
-      color: black;
-      font-size: 13px;
-      margin: 5px;
+      font-weight: bold;
+      margin-top: 20px;
     }
 
-    .button:hover {
-      background: #f1f1f1;
+    .add-btn:hover {
+      background-color: #c0c0c0;
     }
 
     .footer {
-      font-size: 12px;
-      color: #444;
-      margin-top: 20px;
+      margin-top: 30px;
       text-align: center;
+      font-size: 12px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-
   <div class="window">
-    <div class="title-bar">Tuanem's Repo</div>
+    <div class="title-bar">Cydia Repo - tuanem</div>
     <div class="content">
-      <p>Add repo:</p>
-
-      <a class="button" href="sileo://source/https://tuanemss.github.io/repo">Sileo</a>
-      <a class="button" href="zbra://sources/add/https://tuanemss.github.io/repo">Zebra</a>
-      <a class="button" href="cydia://url/https://tuanemss.github.io/repo">Cydia</a>
-
-      <div class="footer">
-               sao chép thủ công:<br>
-        <code>https://tuanemss.github.io/repo</code>
-      </div>
+      <p><strong>Repo:</strong> <code>https://tuanemss.github.io/repo</code></p>
+      <a class="add-btn" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io/repo">
+        ➕ Thêm vào Cydia
+      </a>
     </div>
   </div>
 
+  <div class="footer">
+            © 2025 tuanem
+  </div>
 </body>
 </html>
