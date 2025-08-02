@@ -52,38 +52,47 @@
 </head>
 <body>
   <h1>iPod touch 4 Dualboot iOS 7</h1>
-  <p>This way iOS 7 will be installed as a secondary OS and can be booted without a computer.</p>
-  <p>I provide pre-patched files so don’t worry about it being hard.</p>
+  <img src="v.jpg" alt="Minh hoạ phân vùng" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
+  <p>Tôi không phải nguời làm ra cái này , tôi chỉ hướng dẫn cách thực hiện</p>
+  <p>Mọi thứ đã có sẵn và nó sẽ dễ dàng thôi</p>
 
-  <h2>Requirements</h2>
+<div class="section" style="border-left: 4px solid #f90; padding-left: 12px; background: #1a1a1a; margin-top: 40px;">
+  <h2>Lưu ý</h2>
   <ul>
-    <li>macOS or Windows computer</li>
-    <li>Jailbroken iPod Touch 4G on iOS 5 or 6 (6.1.6 recommended)</li>
-    <li>Add <code>nyansatan.github.io/apt</code> repo in Cydia</li>
-    <li>Install: dualbootstuff, diskdev-cdms, nano, way out, openssh</li>
-    <li>Download IPSW: 
-      <ul>
-        <li>Before 2012: iPhone 3,1 7.1.2</li>
-        <li>After 2011: iPhone 3,3 7.1.2</li>
-      </ul>
-    </li>
-    <li>7zip / WinRAR and dmg tools</li>
+    <li>Hướng dẫn dành cho người dùng nâng cao</li>
+    <li>Các thao tác chỉnh phân vùng có thể làm thiết bị không khởi động nếu làm sai , tự chịu trách nhiệm nếu bị hỏng</li>
+    <li>Chỉ thử trên iPod Touch 4G</li>
+    <li>Hãy biết mình đang làm gì</li>
+    <li>Không đổi tên các phân vùng thành <code>System</code> – sẽ gây lỗi boot</li>
   </ul>
+</div>
 
-  <h2>Preparing Firmware</h2>
-  <p>Extract rootfs from IPSW using 7zip, then:</p>
-  <pre><code>// For devices before 2012
-dmg extract 058-4520-010.dmg decrypted.dmg -k [long key]
+  <h2>Yêu cầu</h2>
+  <ul>
+    <li>macOS or Linux</li>
+    <li>iPod touch 4 iOS 6.1.6 đã Jailbreak</li>
+    <li>Thêm <code>nyansatan.github.io/apt</code> repo trong Cydia</li>
+    <li>cài đặt: dualbootstuff, diskdev-cdms, nano, way out, openssh</li>
+    <li>những thứ cần tải xuống: 
+      <ul>
+        <li>Trước 2012: iPhone_3,1_7.1.2 - <a href="https://ipsw.me/install/iPhone3,1/11D257" download>Download</a></li>
+        <li>Sau 2011: iPhone_3,3_7.1.2 – <a href="https://ipsw.me/install/iPhone3,3/11D257" download>Download</a></li>
+        <li>dmg – <a href="https://drive.google.com/file/d/1FpqwPiB-MmWhytxb3Ph6LlY4Lib7Gw-q/view?usp=sharing" download>Download</a></li>
+        <li>những thứ cần thiết cho ipt4 – <a href="https://archive.org/download/ipt4iOS7/ipt4iOS7.zip" download>Download</a></li>
+      </ul>
+   
 
-// For devices after 2011
-dmg extract 058-4110-009.dmg decrypted.dmg -k [long key]</code></pre>
-  <p>Then:</p>
-  <pre><code>dmg build decrypted.dmg UDZO.dmg</code></pre>
+  <h2>Chuẩn bị rootfs</h2>
+  <p>hãy unzip ipsw vừa tải xuống , tìm tệp *.dmg có dung lượng lớn nhất chính là rootfs</p>
+  <pre><code> ./dmg extract rootfs.dmg extract.dmg -k key fw </code></pre>
+  <p>sau đó:</p>
+  <pre><code>dmg build extract.dmg UDZO.dmg</code></pre>
 
-  <h2>Partitioning</h2>
+  <h2>Phân Vùng</h2>
   <pre><code>ssh root@device_ip
 password: alpine</code></pre>
   <p>Use <code>df -B1</code> to calculate available space, resize partition, and use <code>gptfdisk</code> as described.</p>
+  <img src="demo.jpg" alt="Minh hoạ phân vùng" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
 
   <h2>Restoring rootfs</h2>
   <pre><code>/sbin/newfs_hfs -s -v System -J -b 8192 /dev/disk0s1s3
