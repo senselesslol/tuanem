@@ -12,9 +12,9 @@
       background: linear-gradient(to bottom, #4c6070, #1c1f26);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       color: white;
       overflow: hidden;
     }
@@ -25,6 +25,11 @@
       margin-bottom: 50px;
       color: rgba(255,255,255,0.9);
       text-shadow: 0 1px 2px black;
+    }
+
+    .slider-wrapper {
+      margin-top: auto;
+      margin-bottom: 100px; /* đẩy thanh slider xuống gần dưới */
     }
 
     .slider-container {
@@ -72,8 +77,8 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
       font-size: 20px;
       color: #444;
       z-index: 2;
-      transition: background 0.2s;
       touch-action: none;
+      transition: left 0.1s;
     }
 
     .slider-handle:active {
@@ -81,7 +86,7 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
     }
 
     footer {
-      margin-top: 50px;
+      margin-top: 20px;
       font-size: 11px;
       color: #aaa;
     }
@@ -90,9 +95,11 @@ rgba(255,255,255,0.6) 50%, transparent 70%);
 <body>
   <h1>Thêm Repo Vào Sileo / Zebra / Cydia</h1>
 
-  <div class="slider-container" id="slider">
-    <div class="slider-text">› Slide to unlock</div>
-    <div class="slider-handle" id="handle">➤</div>
+  <div class="slider-wrapper">
+    <div class="slider-container" id="slider">
+      <div class="slider-text">› Slide to unlock</div>
+      <div class="slider-handle" id="handle">➤</div>
+    </div>
   </div>
 
   <footer>&copy; 2025 tuanemss</footer>
@@ -113,6 +120,7 @@ handle.offsetWidth));
     function checkUnlock() {
       const left = parseInt(handle.style.left || 0);
       const max = slider.offsetWidth - handle.offsetWidth - 10;
+
       if (left >= max) {
         const repo = "https://tuanemss.github.io";
         const urls = [
@@ -135,7 +143,11 @@ handle.offsetWidth));
 
         tryOpen();
       } else {
+        handle.style.transition = "left 0.3s ease";
         handle.style.left = "0px";
+        setTimeout(() => {
+          handle.style.transition = "";
+        }, 300);
       }
     }
 
