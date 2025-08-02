@@ -188,7 +188,7 @@
         <div class="cydia-repo">
           <h3>Đây là Repo cydia của tôi:</h3>
           <p>Nó chỉ có một vài tweak cần thiết</p>
-          <a href="trang-moi.html">
+          <a href="repo/index.html">
             <img src="png/cydia.png" alt="Cydia Repo">
           </a>
         </div>
@@ -225,7 +225,7 @@
       document.getElementById("guides-section").style.display = "block";
     }
     function copyRepo() {
-      const repoLink = "https://tuanem.com/repo";
+      const repoLink = "repo/index.html";
       navigator.clipboard.writeText(repoLink).then(() => {
         alert('Đã sao chép link repo!');
       }).catch(() => {
