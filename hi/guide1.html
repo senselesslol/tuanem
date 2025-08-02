@@ -52,7 +52,6 @@
 </head>
 <body>
   <h1>iPod touch 4 Dualboot iOS 7</h1>
-  <img src="v.jpg" alt="Minh hoạ phân vùng" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
   <p>Tôi không phải nguời làm ra cái này , tôi chỉ hướng dẫn cách thực hiện</p>
   <p>Mọi thứ đã có sẵn và nó sẽ dễ dàng thôi</p>
 
@@ -89,25 +88,95 @@
   <pre><code>dmg build extract.dmg UDZO.dmg</code></pre>
 
   <h2>Phân Vùng</h2>
+
+  <p>Vì thiết bị đã cài openssh nên nếu bạn không hiểu biết về nó thì hãy dùng legacy iOS kít với tuỳ chọn connect ssh ( mật khẩu mặc định là alpine ) hoặc có thể dùng iproxy thay thế</p>
   <pre><code>ssh root@device_ip
 password: alpine</code></pre>
-  <p>Use <code>df -B1</code> to calculate available space, resize partition, and use <code>gptfdisk</code> as described.</p>
-  <img src="demo.jpg" alt="Minh hoạ phân vùng" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
+  <img src="2.png" alt="Minh hoạ phân vùng" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
+  <p>nhập<code>df -B1</code>
+  <p>bạn sẽ có được thông tin giống vậy</p>
+  <p>Bây giờ hãy tập trung vào 1B-blocks của /dev/disk0s1s2 , lấy byte đó trừ đi dung lương bạn muốn cho phân vùng thứ 2 , cách tính rất đơn giản công thức sẽ như sau : tôi muốn phân vùng thứ 2 có 8GB-> byte = 8x1024x1024x1024 , sau đó lấy 1B-blocks của /dev/disk0s1s2 - byte tôi vừa tính gọi là X</p>
+  <p>sử dụng<code>hfs_resize /private/var X (thay X bằng kết quả các bạn tính )</code>
+  <p>nhập<code>gptfdisk /dev/rdisk0s1</code>
+
+  <pre><code>p enter i enter 2 enter 
+  # lưu lại Guide duy nhất (Partition unique GUID)
+  d enter 2 enter n enter enter 
+  # lấy X chính là byte vừa resize /8192 sau đó + first sector default rồi nhập kết quả 
+  enter enter 
+  c enter 2 enter Data enter
+  x enter a enter 2 enter 48 enter enter
+  c enter 2 enter
+  # nhập Guide duy nhất (Partition unique GUID)
+  enter
+  s enter 4 enter m enter n enter 3 enter enter
+  # bây giờ hãy mount UDZO.dmg đã tạo từ trước lấy dung lương ổ đĩa tính bằng byte </code></pre>
+  
+  <img src="3.png" alt="ảnh minh hoạ" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
+  
+  <p>lấy byte đó /8192 rồi + first sector default rồi nhập kết quả</P>
+  <pre><code>enter enter 
+  c enter 3 enter iOS7SYSTEM enter
+  n enter 4 enter enter 
+  # lấy last sector default -5 sau đó nhập kết quả
+  enter enter 
+  c enter 4 enter iOS7DATA enter
+  p enter
+  w enter Y enter
+  #reboot thiết bị</code></pre>
 
   <h2>Restoring rootfs</h2>
-  <pre><code>/sbin/newfs_hfs -s -v System -J -b 8192 /dev/disk0s1s3
-/sbin/newfs_hfs -s -v Data -J -b 8192 /dev/disk0s1s4</code></pre>
-  <p>Send UDZO.dmg to device and restore using:</p>
-  <pre><code>asr restore --source /mnt2/UDZO.dmg --target /dev/disk0s1s3 --erase</code></pre>
+  <p>Sau khi thiết bị khởi động lại hãy connect ssh</p>
+  <p>Nhập các lệnh sau</q>
+  <pre><code>mkdir /mnt1 
+  mkdir /mnt2</code></pre>
 
-  <h2>Modifying filesystems</h2>
-  <p>Mount, copy var, delete Setup.app, etc.</p>
+  <pre><code>/sbin/newfs_hfs -s -v System -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s3
+</code></pre>
+  <pre><code>/sbin/newfs_hfs -s -v Data -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4
+</code></pre>
+  <p>copy UDZO.dmg vào /mnt2 bằng afc2 hoặc cách nào các bạn thấy nhanh nhất</p>
 
-  <h2>Adding fixes & bootchain</h2>
-  <p>Extract wifi.zip, bootchain.zip, bootloader.zip to proper locations.</p>
+  <pre><code>asr restore --source /mnt2/UDZO.dmg --target /dev/disk0s1s3 --erase
+   # nó hỏi n/y nhập y và chờ vài phút</code></pre>
+  
 
-  <h2>Booting</h2>
-  <p>Use Way Out app to boot: set <code>/iBSS</code> and <code>/iBEC7</code>, slide to boot.</p>
+  <h2>Đến đây là sắp thành công rồi</h2>
+  <p>hãy nhập theo các lệnh này</p>
+  
+  <pre><code>umount /mnt2
+  mount_hfs /dev/disk0s1s3 /mnt1
+  /sbin/newfs_hfs -s -v Data -J -P -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4
+  mount_hfs /dev/disk0s1s4 /mnt2
+  mv -v /mnt1/private/var/* /mnt2
+  rm -rf /mnt2/mobile/Library/PreinstalledAssets/*
+  rm -rf /mnt2/mobile/Library/Preferences/.GlobalPreferences.plist
+  mkdir /mnt2/keybags
+  cp -a /var/keybags/systembag.kb /mnt2/keybags
+  umount /mnt2</code></pre>
+
+  <pre><code>nano /mnt1/private/etc/fstab</code></pre>
+  <p>sửa theo ảnh nhé</p
+  
+  <img src="4.png" alt="ảnh minh hoạ" style="width:100%; max-width:600px; border-radius:8px; margin: 16px 0;" />
+   <p>Sau đó cần xoá Setup.app trong /mnt1</p>
+  <pre><code>control o
+  enter 
+  Control x</code></pre>
+
+  <h2>Bước cuối cùng</h2>
+  <p>giải nén cái file iPod touch 4</p>
+  <p>giải nén bootachain.zip</p>
+  <pre><code>copy iBSS và iBEC7 vào /
+  copy các file còn lại vào /mnt1
+  # vậy là xong</code></pre>
+
+  <h2>Dualboot</h2>
+  <p>Trước tiên hãy biết cách dùng Way out hoặc xem hướng dẫn trên YouTube</p>
+
+  <p>đặt iBSS làm ảnh đầu tiên sau đó đến iBEC7 và save lại</p>
+
+  <p>kéo thanh slide để duralbôt chờ khoảng 6s rồi giữ home máy sẽ dualboot thành công</p>
 
   <h2>Jailbreaking</h2>
   <p>Put <code>cydia.tar.lzma</code> and <code>jbloader.tar.lzma</code> in /mnt1. Then:</p>
