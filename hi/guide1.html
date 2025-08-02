@@ -1,193 +1,116 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hướng dẫn Dualboot iPod touch 4 iOS 6 -> iOS 7</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Dualboot iOS 7 on iPod touch 4</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #121212;
-      color: #ccc;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px;
-    }
-    h1, h2 {
-      color: #fff;
-      font-weight: 700;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-    }
-    p {
+      font-family: system-ui, sans-serif;
+      background-color: #111;
       color: #aaa;
-      margin-bottom: 15px;
+      line-height: 1.7;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-      color: #bbb;
-    }
-    ul li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+    h1, h2, h3 {
+      color: #eee;
+      margin-top: 2em;
+      border-bottom: 1px solid #333;
+      padding-bottom: 4px;
     }
     code {
-      background-color: #1a1a1a;
+      background-color: #222;
+      color: #ccc;
       padding: 2px 6px;
       border-radius: 4px;
-      color: #fff;
-      margin-right: 5px;
+      font-family: monospace;
     }
-    .copy-btn {
-      background-color: transparent; /* Loại bỏ nền để tối giản */
-      border: none;
-      padding: 2px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: color 0.2s;
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px; /* Kích thước nhỏ gọn */
-      height: 16px;
+    pre {
+      background-color: #1a1a1a;
+      color: #ccc;
+      padding: 10px 15px;
+      overflow-x: auto;
+      border-radius: 8px;
+      margin: 1em 0;
     }
-    .copy-btn i {
-      font-size: 12px;
-      color: #000000; /* Màu đen cho icon */
+    a {
+      color: #80bfff;
+      text-decoration: none;
     }
-    .copy-btn:hover {
-      color: #6200ea; /* Màu tím khi hover để nổi bật */
+    a:hover {
+      text-decoration: underline;
     }
-    .copy-btn.copied {
-      color: #28a745; /* Màu xanh lá cho dấu tích */
+    ul, ol {
+      margin-left: 1.5em;
     }
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
-      ul li {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      code {
-        margin-bottom: 5px;
-        margin-right: 0;
-      }
-      .copy-btn {
-        margin-left: 0;
-        width: 24px;
-        height: 24px;
-        margin-top: 5px;
-      }
-      .copy-btn i {
-        font-size: 14px;
-      }
+    .section {
+      margin-bottom: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hướng dẫn Dualboot iPod touch 4 iOS 6 -> iOS 7</h1>
+  <h1>iPod touch 4 Dualboot iOS 7</h1>
+  <p>This way iOS 7 will be installed as a secondary OS and can be booted without a computer.</p>
+  <p>I provide pre-patched files so don’t worry about it being hard.</p>
 
-    <h2>Giới thiệu</h2>
-    <p>
-      Ngày phát hành: 2011 sử dụng IPSW 3,1 (7.1.2), 2012 sử dụng IPSW 3,3 (7.1.2). Để thực hiện dualboot, bạn cần chuẩn bị rootfs trước tiên.
-    </p>
+  <h2>Requirements</h2>
+  <ul>
+    <li>macOS or Windows computer</li>
+    <li>Jailbroken iPod Touch 4G on iOS 5 or 6 (6.1.6 recommended)</li>
+    <li>Add <code>nyansatan.github.io/apt</code> repo in Cydia</li>
+    <li>Install: dualbootstuff, diskdev-cdms, nano, way out, openssh</li>
+    <li>Download IPSW: 
+      <ul>
+        <li>Before 2012: iPhone 3,1 7.1.2</li>
+        <li>After 2011: iPhone 3,3 7.1.2</li>
+      </ul>
+    </li>
+    <li>7zip / WinRAR and dmg tools</li>
+  </ul>
 
-    <h2>Chuẩn bị</h2>
-    <ul>
-      <li><code>mkdir /mnt1 & mkdir /mnt2</code></li>
-    </ul>
-    <p>
-      Thiết bị của mình có dung lượng 32GB. Để tạo phân vùng cho hệ điều hành thứ 2, mình sẽ giữ lại 16GB, phân vùng thứ 2 cũng là 16GB. Tính toán: <code>16 x 1024 x 1024 x 1024</code> (đơn vị byte). Lưu ý để trống khoảng 2GB để đảm bảo hoạt động ổn định.
-    </p>
+  <h2>Preparing Firmware</h2>
+  <p>Extract rootfs from IPSW using 7zip, then:</p>
+  <pre><code>// For devices before 2012
+dmg extract 058-4520-010.dmg decrypted.dmg -k [long key]
 
-    <h2>Tạo phân vùng</h2>
-    <ul>
-      <li>
-        Nếu chưa phân vùng, sử dụng: <code>hfs_resize /private/var</code> (mình đã phân vùng nên bỏ qua bước này).
-      </li>
-      <li><code>gptfdisk /dev/rdisk0s1</code></li>
-      <li>
-        - <code>p enter i enter 2 enter</code>: Lấy Partition unique GUID, sao chép lại.
-      </li>
-      <li>
-        - <code>d enter 2 enter n enter enter</code>: Dung lượng phân vùng (mình dùng: <code>17179869184/8192 + 169368 = 2266520</code>).
-      </li>
-      <li>- <code>enter enter</code></li>
-      <li>- <code>c enter 2 enter Data enter</code></li>
-      <li>- <code>x enter a enter 2 enter 48 enter enter</code></li>
-      <li>- <code>c enter 2 enter</code>: Nhập GUID vừa sao chép.</li>
-      <li>
-        - <code>s enter 4 enter m enter n enter 3 enter enter</code>: Tính toán (byte của UDZO.dmg / 8192 + first sector 2266524 = 2462497).
-      </li>
-      <li>- <code>enter enter</code></li>
-      <li>- <code>c enter 3 enter iOS7SYSTEM</code></li>
-      <li>
-        - <code>n enter 4 enter enter</code>: Last sector default - 5 (mình là 3903487).
-      </li>
-      <li>- <code>enter enter</code></li>
-      <li>- <code>c enter 4 enter iOS7DATA</code></li>
-      <li>- <code>p enter w enter Y enter</code>: Hoàn tất phân vùng.</li>
-      <li><code>sync</code></li>
-      <li><code>reboot</code> (nên reboot để chắc chắn)</li>
-    </ul>
+// For devices after 2011
+dmg extract 058-4110-009.dmg decrypted.dmg -k [long key]</code></pre>
+  <p>Then:</p>
+  <pre><code>dmg build decrypted.dmg UDZO.dmg</code></pre>
 
-    <h2>Kết nối SSH</h2>
-    <ul>
-      <li><code>/sbin/newfs_hfs -s -v System -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s3</code><button class="copy-btn" onclick="copyCommand(this, '/sbin/newfs_hfs -s -v System -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s3')"><i class="fas fa-copy"></i></button></li>
-      <li><code>/sbin/newfs_hfs -s -v Data -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4</code><button class="copy-btn" onclick="copyCommand(this, '/sbin/newfs_hfs -s -v Data -J -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4')"><i class="fas fa-copy"></i></button></li>
-      <li><code>mount_hfs /dev/disk0s1s4 /mnt2</code><button class="copy-btn" onclick="copyCommand(this, 'mount_hfs /dev/disk0s1s4 /mnt2')"><i class="fas fa-copy"></i></button></li>
-      <li>Copy UDZO.dmg vào <code>/mnt2</code> bằng afc2 hoặc scp.</li>
-      <li><code>asr restore --source /mnt2/UDZO.dmg --target /dev/disk0s1s3 --erase</code><button class="copy-btn" onclick="copyCommand(this, 'asr restore --source /mnt2/UDZO.dmg --target /dev/disk0s1s3 --erase')"><i class="fas fa-copy"></i></button></li>
-      <li><code>umount /mnt2</code><button class="copy-btn" onclick="copyCommand(this, 'umount /mnt2')"><i class="fas fa-copy"></i></button></li>
-      <li><code>mount_hfs /dev/disk0s1s3 /mnt1</code><button class="copy-btn" onclick="copyCommand(this, 'mount_hfs /dev/disk0s1s3 /mnt1')"><i class="fas fa-copy"></i></button></li>
-      <li><code>/sbin/newfs_hfs -s -v Data -J -P -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4</code><button class="copy-btn" onclick="copyCommand(this, '/sbin/newfs_hfs -s -v Data -J -P -b 8192 -n a=8192,c=8192,e=8192 /dev/disk0s1s4')"><i class="fas fa-copy"></i></button></li>
-      <li><code>mount_hfs /dev/disk0s1s4 /mnt2</code><button class="copy-btn" onclick="copyCommand(this, 'mount_hfs /dev/disk0s1s4 /mnt2')"><i class="fas fa-copy"></i></button></li>
-      <li><code>mv -v /mnt1/private/var/* /mnt2</code><button class="copy-btn" onclick="copyCommand(this, 'mv -v /mnt1/private/var/* /mnt2')"><i class="fas fa-copy"></i></button></li>
-      <li><code>rm -rf /mnt2/mobile/Library/PreinstalledAssets/*</code><button class="copy-btn" onclick="copyCommand(this, 'rm -rf /mnt2/mobile/Library/PreinstalledAssets/*')"><i class="fas fa-copy"></i></button></li>
-      <li><code>rm -rf /mnt2/mobile/Library/Preferences/.GlobalPreferences.plist</code><button class="copy-btn" onclick="copyCommand(this, 'rm -rf /mnt2/mobile/Library/Preferences/.GlobalPreferences.plist')"><i class="fas fa-copy"></i></button></li>
-      <li><code>mkdir /mnt2/keybags</code><button class="copy-btn" onclick="copyCommand(this, 'mkdir /mnt2/keybags')"><i class="fas fa-copy"></i></button></li>
-      <li><code>cp -a /var/keybags/systembag.kb /mnt2/keybags</code><button class="copy-btn" onclick="copyCommand(this, 'cp -a /var/keybags/systembag.kb /mnt2/keybags')"><i class="fas fa-copy"></i></button></li>
-      <li><code>umount /mnt2</code><button class="copy-btn" onclick="copyCommand(this, 'umount /mnt2')"><i class="fas fa-copy"></i></button></li>
-      <li><code>nano /mnt1/private/etc/fstab</code><button class="copy-btn" onclick="copyCommand(this, 'nano /mnt1/private/etc/fstab')"><i class="fas fa-copy"></i></button></li>
-    </ul>
+  <h2>Partitioning</h2>
+  <pre><code>ssh root@device_ip
+password: alpine</code></pre>
+  <p>Use <code>df -B1</code> to calculate available space, resize partition, and use <code>gptfdisk</code> as described.</p>
 
-    <h2>Fix WiFi</h2>
-    <p>
-      (Nội dung fix WiFi chưa được cung cấp, hãy thêm chi tiết nếu cần!)
-    </p>
-  </div>
+  <h2>Restoring rootfs</h2>
+  <pre><code>/sbin/newfs_hfs -s -v System -J -b 8192 /dev/disk0s1s3
+/sbin/newfs_hfs -s -v Data -J -b 8192 /dev/disk0s1s4</code></pre>
+  <p>Send UDZO.dmg to device and restore using:</p>
+  <pre><code>asr restore --source /mnt2/UDZO.dmg --target /dev/disk0s1s3 --erase</code></pre>
 
-  <script>
-    function copyCommand(button, command) {
-      navigator.clipboard.writeText(command).then(() => {
-        button.classList.add('copied');
-        button.innerHTML = '<i class="fas fa-check"></i>'; // Thay bằng dấu tích
-        setTimeout(() => {
-          button.classList.remove('copied');
-          button.innerHTML = '<i class="fas fa-copy"></i>'; // Quay lại icon sao chép
-        }, 2000);
-      }).catch(() => {
-        alert('Lỗi khi sao chép, hãy thử lại!');
-      });
-    }
-  </script>
+  <h2>Modifying filesystems</h2>
+  <p>Mount, copy var, delete Setup.app, etc.</p>
+
+  <h2>Adding fixes & bootchain</h2>
+  <p>Extract wifi.zip, bootchain.zip, bootloader.zip to proper locations.</p>
+
+  <h2>Booting</h2>
+  <p>Use Way Out app to boot: set <code>/iBSS</code> and <code>/iBEC7</code>, slide to boot.</p>
+
+  <h2>Jailbreaking</h2>
+  <p>Put <code>cydia.tar.lzma</code> and <code>jbloader.tar.lzma</code> in /mnt1. Then:</p>
+  <pre><code>tar --lzma -xvf cydia.tar.lzma
+tar --lzma -xvf jbloader.tar.lzma</code></pre>
+  <p>Set <code>rw</code> flag in fstab. Done.</p>
+
+  <h2>Thanks</h2>
+  <ul>
+    <li>@nyan_satan – Dualboot guide</li>
+    <li>@Ralph0045 – Core concepts</li>
+    <li>@albyvar25 – Wifi fix</li>
+  </ul>
 </body>
 </html>
