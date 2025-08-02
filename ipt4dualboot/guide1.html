@@ -179,10 +179,11 @@ password: alpine</code></pre>
   <p>kéo thanh slide để duralbôt chờ khoảng 6s rồi giữ home máy sẽ dualboot thành công</p>
 
   <h2>Jailbreaking</h2>
-  <p>Put <code>cydia.tar.lzma</code> and <code>jbloader.tar.lzma</code> in /mnt1. Then:</p>
+  <p>Đưa<code>cydia.tar.lzma</code>,<code>jbloader.tar.lzma</code>,<code>kernelcache.zip</code> vào /mnt1. Sau đó:</p>
   <pre><code>tar --lzma -xvf cydia.tar.lzma
 tar --lzma -xvf jbloader.tar.lzma</code></pre>
-  <p>Set <code>rw</code> flag in fstab. Done.</p>
+  <p>giải nén kernelcache.zip</p>
+  <p>Sửa fstab đổi ro thành rw</p>
 
   <h2>Thanks</h2>
   <ul>
