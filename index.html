@@ -17,18 +17,21 @@
       background-color: #121212;
       color: #e0e0e0;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
     .container {
       display: flex;
-      min-height: 100vh;
+      flex: 1;
     }
     .sidebar {
       width: 260px;
       background-color: #1e1e1e;
       padding: 25px;
-      border-radius: 0 20px 20px 0;
+      border-radius: 0 20px 0 0;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -58,10 +61,10 @@
       transform: translateX(5px);
     }
     .contact {
-      margin-top: auto; /* Đẩy xuống dưới cùng */
+      margin-top: auto;
       text-align: center;
       padding-top: 20px;
-      border-top: 1px solid #333; /* Thêm đường viền để phân cách */
+      border-top: 1px solid #333;
     }
     .contact h3 {
       color: #fff;
@@ -70,13 +73,14 @@
       margin-bottom: 15px;
     }
     .contact .social-icons {
-      display: flex; /* Sắp xếp ngang */
+      display: flex;
       justify-content: center;
-      gap: 15px; /* Khoảng cách giữa các icon */
+      gap: 15px;
+      margin-bottom: 10px;
     }
     .contact a {
       color: #bbb;
-      font-size: 20px; /* Kích thước icon */
+      font-size: 20px;
       transition: all 0.3s ease;
     }
     .contact a:hover {
@@ -110,7 +114,7 @@
     }
     .guide-full-img {
       width: 100%;
-      max-width: 400px; /* Thu nhỏ hình ảnh tối đa */
+      max-width: 400px;
       height: auto;
       border-radius: 12px;
       margin-bottom: 15px;
@@ -155,14 +159,18 @@
       color: #b0b0b0;
       margin-bottom: 20px;
     }
-    .cydia-repo img {
-      width: 160px;
+
+    .repo-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px; 
+      width: 80px;
       height: auto;
       border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .cydia-repo img:hover {
+    .repo-icon:hover {
       transform: scale(1.1);
     }
 
@@ -177,8 +185,7 @@
       }
       .sidebar {
         width: 100%;
-        border-radius: 0 0 20px 20px;
-        border-bottom: 1px solid #333;
+        border-radius: 0;
         padding: 20px;
       }
       .content {
@@ -189,16 +196,21 @@
         margin: 15px 0;
       }
       .guide-full-img {
-        max-width: 250px; /* Thu nhỏ thêm trên mobile */
+        max-width: 250px;
       }
-      .cydia-repo img {
-        width: 130px;
+      .cydia-repo {
+        padding: 20px;
       }
       .contact .social-icons {
-        gap: 10px; /* Giảm khoảng cách trên mobile */
+        gap: 10px;
       }
       .contact a {
-        font-size: 18px; /* Giảm kích thước icon trên mobile */
+        font-size: 18px;
+      }
+      .repo-icon {
+        width: 60px;
+        top: 10px;
+        right: 10px;
       }
     }
   </style>
@@ -215,6 +227,7 @@
           <a href="https://x.com/tuanem6996" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
           <a href="https://github.com/tuanemss" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://example.com/discord" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://facebook.com/yourfacebook" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
     </aside>
@@ -226,9 +239,9 @@
         <p>Hãy theo dõi phần hướng dẫn nhé!</p>
 
         <div class="cydia-repo">
-          <h3>Repo Cydia của tôi</h3>
-          <p>Nó chỉ có một vài tweak cần thiết</p>
-          <img src="png/cydia.png" alt="Cydia Repo" onclick="copyRepo()">
+          <h3>Repo Cydia cộng đồng</h3>
+          <a href="https://cydiablock.github.io/">Nhấn vào đây</a>
+          <h2>Siêu dự án với rất nhiều tweak</h2>
         </div>
       </div>
 
@@ -250,9 +263,12 @@
             <p>lol</p>
           </a>
         </div>
+
       </div>
     </main>
   </div>
+
+  <img src="png/cydia.png" alt="Repo Icon" class="repo-icon" onclick="window.location.href='repo/index.html'">
 
   <script>
     function showHome() {
@@ -262,14 +278,6 @@
     function showGuides() {
       document.getElementById("home-section").style.display = "none";
       document.getElementById("guides-section").style.display = "block";
-    }
-    function copyRepo() {
-      const repoLink = "repo/index.html";
-      navigator.clipboard.writeText(window.location.origin + "/" + repoLink).then(() => {
-        alert('Đã sao chép link repo!');
-      }).catch(() => {
-        alert('Lỗi khi sao chép, hãy thử lại!');
-      });
     }
   </script>
 </body>
